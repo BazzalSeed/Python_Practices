@@ -1,0 +1,19 @@
+import turtle
+
+flower=turtle.Turtle()
+
+
+def polygon(length,side,numflower):
+
+    angle=360.0/side
+    turn= 360/numflower
+    for x in range(numflower):
+        flower.goto(0,0)
+        flower.right(turn)
+        for i in range(side):
+            flower.forward(length)
+            flower.right(angle)
+            
+
+
+polygon(15,15,3)

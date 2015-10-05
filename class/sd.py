@@ -1,0 +1,31 @@
+#!/Library/Frameworks/Python.framework/Versions/Current/bin/python2.7
+
+# excercise1
+import matplotlib.pyplot as mpl
+poplistpred = [ ]
+
+poplistprey = [ ]
+
+def PP(preyPop,predPop,dt,months):
+    pppred=predPop
+    ppprey=preyPop
+    poplistpred.append (predPop)
+    poplistprey.append (preyPop)
+    runs=int(months/dt)
+    for i in range (runs):            
+        temp = pppred
+        pppred = pppred+(0.005*pppred*ppprey-0.75*pppred)*dt
+        ppprey = ppprey+(0.5*ppprey-0.02*temp*ppprey)*dt
+        poplistprey.append (ppprey)
+        poplistpred.append (pppred)
+        print(i,pppred,ppprey)
+        
+
+def main(preyPop,predPop,dt,months):
+    PP(preyPop,predPop,dt,months)
+    runs=int (months/dt)
+    mpl.plot(range(runs+1), poplistpred)
+    mpl.plot(range(runs+1),poplistprey)
+    mpl.show()
+main(1000,25,0.01,60)
+
